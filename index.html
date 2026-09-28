@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="BRASA, restaurante de cocina a la brasa en Bilbao. Producto, fuego y sabor."
+    >
+
+    <title>BRASA | Cocina al fuego en Bilbao</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         CABECERA / NAVEGACIÓN
+    ========================================== -->
+
+    <header class="header" id="header">
+
+        <a href="#inicio" class="logo">
+            BRASA<span>.</span>
+        </a>
+
+        <nav class="nav" id="nav">
+
+            <a href="#inicio" class="nav-link">Inicio</a>
+            <a href="#carta" class="nav-link">Carta</a>
+            <a href="#experiencia" class="nav-link">Experiencia</a>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="#reservas" class="nav-link">Reservas</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+
+        </nav>
+
+        <a href="#reservas" class="boton-header">
+            Reservar mesa
+        </a>
+
+        <!-- MENÚ MÓVIL -->
+
+        <button
+            class="menu-hamburguesa"
+            id="menu-hamburguesa"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+        <!-- =========================================
+             PORTADA
+        ========================================== -->
+
+        <section id="inicio" class="inicio">
+
+            <div class="overlay-inicio"></div>
+
+            <div class="contenido-inicio revelar">
+
+                <span class="etiqueta">
+                    COCINA A LA BRASA · BILBAO
+                </span>
+
+                <h1>
+                    Donde el fuego<br>
+                    <span>cobra vida.</span>
+                </h1>
+
+                <p class="texto-inicio">
+                    Producto seleccionado, brasas encendidas y una cocina
+                    donde cada plato empieza con algo muy sencillo:
+                    respeto por el ingrediente.
+                </p>
+
+                <div class="botones-inicio">
+
+                    <a href="#carta" class="boton">
+                        Descubrir la carta
+                    </a>
+
+                    <a href="#reservas" class="boton-secundario">
+                        Reservar mesa
+                    </a>
+
+                </div>
+
+
+                <div class="info-inicio">
+
+                    <div>
+                        <span class="icono-info">◷</span>
+
+                        <div>
+                            <small>HORARIO</small>
+                            <strong>13:00 — 00:00</strong>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <span class="icono-info">⌖</span>
+
+                        <div>
+                            <small>UBICACIÓN</small>
+                            <strong>Bilbao · Bizkaia</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a href="#carta" class="scroll-indicador">
+                <span>DESCUBRE</span>
+                <div class="linea-scroll"></div>
+            </a>
+
+        </section>
+
+
+
+        <!-- =========================================
+             INTRODUCCIÓN
+        ========================================== -->
+
+        <section class="introduccion">
+
+            <div class="introduccion-numero revelar">
+                <span>01</span>
+            </div>
+
+            <div class="introduccion-texto revelar">
+
+                <span class="etiqueta">
+                    NUESTRA FILOSOFÍA
+                </span>
+
+                <h2>
+                    Menos artificio.<br>
+                    Más producto.
+                </h2>
+
+            </div>
+
+            <div class="introduccion-descripcion revelar">
+
+                <p>
+                    Nuestra cocina gira alrededor del fuego.
+                    Seleccionamos cada ingrediente buscando sabor,
+                    origen y calidad.
+                </p>
+
+                <p>
+                    El carbón, la temperatura y el tiempo hacen el resto.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             CARTA
+        ========================================== -->
+
+        <section id="carta" class="carta">
+
+            <div class="cabecera-seccion revelar">
+
+                <span class="etiqueta">
+                    NUESTRA COCINA
+                </span>
+
+                <h2>La carta</h2>
+
+                <p>
+                    Producto, fuego y respeto por la materia prima.
+                </p>
+
+            </div>
+
+
+            <!-- CATEGORÍAS -->
+
+            <div class="categorias-carta revelar">
+
+                <button
+                    class="categoria activa"
+                    data-categoria="entrantes"
+                >
+                    Entrantes
+                </button>
+
+                <button
+                    class="categoria"
+                    data-categoria="carnes"
+                >
+                    Carnes
+                </button>
+
+                <button
+                    class="categoria"
+                    data-categoria="pescados"
+                >
+                    Pescados
+                </button>
+
+                <button
+                    class="categoria"
+                    data-categoria="postres"
+                >
+                    Postres
+                </button>
+
+            </div>
+
+
+            <!-- PLATOS DINÁMICOS -->
+
+            <div
+                class="lista-platos revelar"
+                id="lista-platos"
+            >
+
+                <article class="plato">
+
+                    <div class="numero-plato">
+                        01
+                    </div>
+
+                    <div class="info-plato">
+
+                        <div class="titulo-plato">
+                            <h3>Croquetas de jamón ibérico</h3>
+                            <span class="precio">12 €</span>
+                        </div>
+
+                        <p>
+                            Cremosas, crujientes y elaboradas en casa.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="plato">
+
+                    <div class="numero-plato">
+                        02
+                    </div>
+
+                    <div class="info-plato">
+
+                        <div class="titulo-plato">
+                            <h3>Verduras a la brasa</h3>
+                            <span class="precio">14 €</span>
+                        </div>
+
+                        <p>
+                            Verduras de temporada cocinadas al carbón.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="plato">
+
+                    <div class="numero-plato">
+                        03
+                    </div>
+
+                    <div class="info-plato">
+
+                        <div class="titulo-plato">
+                            <h3>Pulpo a la brasa</h3>
+                            <span class="precio">19 €</span>
+                        </div>
+
+                        <p>
+                            Pulpo, patata asada y aceite de pimentón.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="plato">
+
+                    <div class="numero-plato">
+                        04
+                    </div>
+
+                    <div class="info-plato">
+
+                        <div class="titulo-plato">
+                            <h3>Provolone al fuego</h3>
+                            <span class="precio">13 €</span>
+                        </div>
+
+                        <p>
+                            Queso provolone fundido con tomate
+                            y hierbas aromáticas.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <p class="nota-carta">
+                Consulta con nuestro equipo sobre alérgenos
+                e intolerancias alimentarias.
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================================
+             EXPERIENCIA
+        ========================================== -->
+
+        <section
+            id="experiencia"
+            class="experiencia"
+        >
+
+            <div class="experiencia-fondo"></div>
+
+
+            <div class="experiencia-contenido revelar">
+
+                <span class="numero-seccion">
+                    02
+                </span>
+
+                <span class="etiqueta">
+                    LA EXPERIENCIA BRASA
+                </span>
+
+                <h2>
+                    El fuego no es<br>
+                    una técnica.<br>
+                    <span>Es el ingrediente.</span>
+                </h2>
+
+                <p>
+                    Cocinamos sobre carbón y llama viva.
+                    Controlamos temperatura, distancia y tiempo
+                    para conseguir el punto exacto de cada producto.
+                </p>
+
+                <a href="#reservas" class="enlace-flecha">
+                    Vivir la experiencia
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             NOSOTROS
+        ========================================== -->
+
+        <section
+            id="nosotros"
+            class="nosotros"
+        >
+
+            <div class="nosotros-contenedor">
+
+
+                <div class="nosotros-principal revelar">
+
+                    <span class="etiqueta">
+                        NUESTRA HISTORIA
+                    </span>
+
+                    <h2>
+                        Cocinamos con fuego.<br>
+                        Sin esconder nada.
+                    </h2>
+
+                    <p class="texto-destacado">
+                        BRASA nace de una idea sencilla:
+                        cuando el producto es bueno,
+                        no necesita esconderse.
+                    </p>
+
+                    <p>
+                        Nuestra cocina combina producto seleccionado,
+                        brasas, tiempo y respeto por la materia prima.
+                        Cada servicio empieza encendiendo el fuego
+                        y termina cuando sale el último plato.
+                    </p>
+
+                </div>
+
+
+                <div class="datos-restaurante revelar">
+
+                    <div class="dato">
+
+                        <strong
+                            class="contador"
+                            data-objetivo="10"
+                        >
+                            0
+                        </strong>
+
+                        <span>+</span>
+
+                        <p>Años de experiencia</p>
+
+                    </div>
+
+
+                    <div class="dato">
+
+                        <strong
+                            class="contador"
+                            data-objetivo="4"
+                        >
+                            0
+                        </strong>
+
+                        <span></span>
+
+                        <p>Tipos de cocina</p>
+
+                    </div>
+
+
+                    <div class="dato">
+
+                        <strong>
+                            100
+                        </strong>
+
+                        <span>%</span>
+
+                        <p>Pasión por el producto</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             FRASE / SEPARADOR
+        ========================================== -->
+
+        <section class="frase">
+
+            <p class="revelar">
+                “El fuego transforma el producto.
+                <span>Nosotros solo lo acompañamos.</span>”
+            </p>
+
+        </section>
+
+
+
+        <!-- =========================================
+             RESERVAS
+        ========================================== -->
+
+        <section
+            id="reservas"
+            class="reservas"
+        >
+
+            <div class="reservas-contenedor">
+
+
+                <!-- INFORMACIÓN -->
+
+                <div class="reservas-info revelar">
+
+                    <span class="etiqueta">
+                        RESERVAS
+                    </span>
+
+                    <h2>
+                        Tu mesa<br>
+                        te espera.
+                    </h2>
+
+                    <p>
+                        Selecciona día, hora y número de personas.
+                        Nosotros nos encargamos del resto.
+                    </p>
+
+
+                    <div class="detalle-reserva">
+
+                        <div>
+                            <span>01</span>
+
+                            <p>
+                                <strong>Comidas</strong>
+                                13:00 — 16:00
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <span>02</span>
+
+                            <p>
+                                <strong>Cenas</strong>
+                                20:00 — 00:00
+                            </p>
+                        </div>
+
+
+                        <div>
+                            <span>03</span>
+
+                            <p>
+                                <strong>Grupos</strong>
+                                Para grupos de más de 8 personas,
+                                contacta con nosotros.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- FORMULARIO -->
+
+                <div class="caja-reserva revelar">
+
+                    <form id="form-reserva">
+
+
+                        <div class="grupo-formulario">
+
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                placeholder="Tu nombre"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="grupo-formulario">
+
+                            <label for="telefono">
+                                Teléfono
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefono"
+                                name="telefono"
+                                placeholder="600 000 000"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="fila-formulario">
+
+
+                            <div class="grupo-formulario">
+
+                                <label for="fecha">
+                                    Fecha
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="fecha"
+                                    name="fecha"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="grupo-formulario">
+
+                                <label for="hora">
+                                    Hora
+                                </label>
+
+                                <select
+                                    id="hora"
+                                    name="hora"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Selecciona hora
+                                    </option>
+
+                                    <optgroup label="Comida">
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="14:30">14:30</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="15:30">15:30</option>
+                                    </optgroup>
+
+                                    <optgroup label="Cena">
+                                        <option value="20:00">20:00</option>
+                                        <option value="20:30">20:30</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="21:30">21:30</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="22:30">22:30</option>
+                                        <option value="23:00">23:00</option>
+                                    </optgroup>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="grupo-formulario">
+
+                            <label for="personas">
+                                Número de personas
+                            </label>
+
+                            <select
+                                id="personas"
+                                name="personas"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecciona
+                                </option>
+
+                                <option value="1">1 persona</option>
+                                <option value="2">2 personas</option>
+                                <option value="3">3 personas</option>
+                                <option value="4">4 personas</option>
+                                <option value="5">5 personas</option>
+                                <option value="6">6 personas</option>
+                                <option value="7">7 personas</option>
+                                <option value="8">8 personas</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="grupo-formulario">
+
+                            <label for="comentarios">
+                                Peticiones especiales
+                                <span>(opcional)</span>
+                            </label>
+
+                            <textarea
+                                id="comentarios"
+                                name="comentarios"
+                                rows="4"
+                                placeholder="Alergias, celebración, trona..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="boton-reserva"
+                        >
+                            <span>Solicitar reserva</span>
+                            <span>→</span>
+                        </button>
+
+
+                        <p class="aviso-formulario">
+                            Esta demostración no envía datos
+                            a un sistema real de reservas.
+                        </p>
+
+
+                        <div
+                            id="mensaje-reserva"
+                            class="mensaje-reserva"
+                            aria-live="polite"
+                        ></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             CONTACTO / HORARIOS
+        ========================================== -->
+
+        <section
+            id="contacto"
+            class="contacto"
+        >
+
+            <div class="cabecera-seccion revelar">
+
+                <span class="etiqueta">
+                    VEN A VERNOS
+                </span>
+
+                <h2>
+                    Nos vemos<br>
+                    alrededor del fuego.
+                </h2>
+
+            </div>
+
+
+            <div class="contacto-grid">
+
+
+                <div class="contacto-bloque revelar">
+
+                    <span class="numero-contacto">
+                        01
+                    </span>
+
+                    <h3>Ubicación</h3>
+
+                    <p>
+                        Bilbao<br>
+                        Bizkaia
+                    </p>
+
+                    <a
+                        href="#"
+                        class="enlace-contacto"
+                        id="enlace-mapa"
+                    >
+                        Cómo llegar →
+                    </a>
+
+                </div>
+
+
+                <div class="contacto-bloque revelar">
+
+                    <span class="numero-contacto">
+                        02
+                    </span>
+
+                    <h3>Horario</h3>
+
+                    <p>
+                        Martes — Domingo<br>
+                        13:00 — 16:00<br>
+                        20:00 — 00:00
+                    </p>
+
+                    <small>
+                        Lunes cerrado
+                    </small>
+
+                </div>
+
+
+                <div class="contacto-bloque revelar">
+
+                    <span class="numero-contacto">
+                        03
+                    </span>
+
+                    <h3>Contacto</h3>
+
+                    <p>
+                        +34 600 000 000<br>
+                        hola@brasa-demo.es
+                    </p>
+
+                    <small>
+                        Datos de demostración
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        <div class="footer-superior">
+
+            <a
+                href="#inicio"
+                class="logo logo-footer"
+            >
+                BRASA<span>.</span>
+            </a>
+
+            <p>
+                Producto · Fuego · Tiempo
+            </p>
+
+            <div class="redes">
+
+                <a
+                    href="#"
+                    aria-label="Instagram"
+                    class="enlace-demo"
+                >
+                    Instagram
+                </a>
+
+                <a
+                    href="#"
+                    aria-label="Facebook"
+                    class="enlace-demo"
+                >
+                    Facebook
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-inferior">
+
+            <p>
+                © <span id="anio"></span> BRASA.
+                Proyecto demostrativo.
+            </p>
+
+            <a href="#inicio">
+                Volver arriba ↑
+            </a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================
+         CONFIRMACIÓN DE RESERVA
+    ========================================== -->
+
+    <div
+        class="modal"
+        id="modal-reserva"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay"></div>
+
+        <div
+            class="modal-contenido"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-modal"
+        >
+
+            <button
+                class="cerrar-modal"
+                id="cerrar-modal"
+                aria-label="Cerrar"
+            >
+                ×
+            </button>
+
+            <span class="icono-confirmacion">
+                ✓
+            </span>
+
+            <span class="etiqueta">
+                SOLICITUD RECIBIDA
+            </span>
+
+            <h2 id="titulo-modal">
+                Gracias,
+                <span id="nombre-confirmacion"></span>.
+            </h2>
+
+            <p>
+                Hemos preparado el resumen de tu solicitud.
+            </p>
+
+
+            <div class="resumen-reserva">
+
+                <div>
+                    <small>FECHA</small>
+                    <strong id="fecha-confirmacion">—</strong>
+                </div>
+
+                <div>
+                    <small>HORA</small>
+                    <strong id="hora-confirmacion">—</strong>
+                </div>
+
+                <div>
+                    <small>PERSONAS</small>
+                    <strong id="personas-confirmacion">—</strong>
+                </div>
+
+            </div>
+
+
+            <p class="nota-modal">
+                Proyecto de demostración: la solicitud
+                no se almacena ni se envía a un restaurante real.
+            </p>
+
+
+            <button
+                class="boton"
+                id="aceptar-modal"
+            >
+                Entendido
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         BOTÓN FLOTANTE
+    ========================================== -->
+
+    <a
+        href="#reservas"
+        class="reserva-flotante"
+        aria-label="Reservar mesa"
+    >
+        <span>Reservar</span>
+        <span>→</span>
+    </a>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
