@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Propuesta visual para Restaurante Constanza en León. Cocina casera, menú diario, tapas, eventos y reservas.">
+<title>Constanza | Restaurante & Bar · León</title>
+<style>
+:root{
+  --bg:#17120f;
+  --panel:#211915;
+  --cream:#f4eadc;
+  --muted:#c8b9a7;
+  --wine:#7a2f33;
+  --wine2:#a44f50;
+  --gold:#d9b57a;
+  --line:rgba(244,234,220,.14);
+  --shadow:0 28px 90px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit}
+.demo-note{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:50;padding:8px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(20,15,13,.8);backdrop-filter:blur(12px);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#ead9c4}
+header{position:absolute;z-index:20;left:0;right:0;top:0;padding:28px 5vw}
+.nav{max-width:1220px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand{font-family:Georgia,serif;font-size:29px;letter-spacing:.12em}
+.brand small{display:block;margin-top:3px;font-family:Inter,sans-serif;font-size:8px;letter-spacing:.34em;color:#d7c2ab}
+.links{display:flex;gap:28px;align-items:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.links a{opacity:.83}
+.links a:hover{opacity:1}
+.reserve-top{padding:11px 16px;border:1px solid rgba(255,255,255,.5);border-radius:999px}
+.hero{min-height:94vh;position:relative;display:grid;place-items:end start;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+ linear-gradient(90deg,rgba(19,11,9,.9) 0%,rgba(19,11,9,.66) 42%,rgba(19,11,9,.28) 70%,rgba(19,11,9,.56) 100%),
+ linear-gradient(0deg,rgba(18,13,11,.94) 0%,rgba(18,13,11,0) 40%),
+ url("https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YBgeRJnro7CGJyr1/imagen-de-whatsapp-2025-03-10-a-las-22.55.43_46736be7-YKb3VBPKwJs0kVR9.jpg") center/cover no-repeat;
+ transform:scale(1.02)}
+.hero-content{position:relative;z-index:2;max-width:1220px;width:90%;margin:0 auto;padding:170px 0 90px}
+.eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e0c59e}
+.eyebrow:before{content:"";width:32px;height:1px;background:#e0c59e}
+h1{max-width:900px;margin:18px 0 22px;font-family:Georgia,serif;font-size:clamp(58px,8vw,118px);font-weight:400;line-height:.89;letter-spacing:-.055em}
+.hero-copy{max-width:610px;font-size:16px;line-height:1.7;color:#dbcdbf}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 19px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.05em}
+.btn-main{background:var(--cream);color:#1d1511}
+.btn-ghost{border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.04)}
+.quick{max-width:1220px;width:90%;margin:-28px auto 0;position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,1fr);background:#efe4d5;color:#211813;box-shadow:var(--shadow)}
+.quick div{padding:24px 28px;border-right:1px solid rgba(30,20,15,.14)}
+.quick div:last-child{border-right:0}
+.quick small{display:block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#785e4d}
+.quick strong{display:block;margin-top:8px;font-family:Georgia,serif;font-size:21px;font-weight:400}
+section{padding:105px 5vw}
+.wrap{max-width:1220px;margin:auto}
+.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:end;margin-bottom:52px}
+.section-head h2{margin:0;font-family:Georgia,serif;font-size:clamp(42px,5.4vw,74px);font-weight:400;line-height:.96;letter-spacing:-.04em}
+.section-head p{margin:0;max-width:580px;color:var(--muted);font-size:15px;line-height:1.8}
+.experience{padding-top:125px}
+.experience-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+.photo-large,.photo-small{overflow:hidden;position:relative;border-radius:2px;min-height:540px}
+.photo-small{min-height:540px}
+.photo-large img,.photo-small img{transition:transform .7s ease}
+.photo-large:hover img,.photo-small:hover img{transform:scale(1.03)}
+.overlay-card{position:absolute;left:22px;right:22px;bottom:22px;padding:22px;background:rgba(20,14,12,.78);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12)}
+.overlay-card span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#dabb8b}
+.overlay-card h3{margin:8px 0 0;font-family:Georgia,serif;font-size:30px;font-weight:400}
+.menu{background:#f0e5d6;color:#221914}
+.menu .eyebrow{color:#865c4e}.menu .eyebrow:before{background:#865c4e}
+.menu .section-head p{color:#705f55}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.menu-card{background:#fffaf4;border:1px solid rgba(45,30,20,.12);min-height:320px;padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+.menu-card span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8b6453}
+.menu-card h3{font-family:Georgia,serif;font-size:34px;font-weight:400;margin:14px 0 12px}
+.menu-card p{color:#725f53;line-height:1.75;font-size:14px}
+.menu-card strong{margin-top:34px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#7b3134}
+.events{position:relative;overflow:hidden}
+.events-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.events-photo{min-height:540px}
+.events-copy h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(48px,6vw,80px);line-height:.94;letter-spacing:-.045em;margin:16px 0 24px}
+.events-copy p{color:var(--muted);line-height:1.8}
+.events-list{display:grid;gap:11px;margin:28px 0}
+.events-list div{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+.events-list b{color:var(--gold)}
+.reviews{background:#120e0c}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.review{padding:28px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.stars{color:#d8b273;letter-spacing:.12em}
+.review p{min-height:95px;color:#ddd0c2;line-height:1.7}
+.review small{color:#9f8d7c}
+.visit{padding-bottom:125px}
+.visit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+.visit-main,.visit-side{padding:42px;border:1px solid var(--line);background:#211915}
+.visit-main h2{font-family:Georgia,serif;font-size:clamp(46px,6vw,78px);line-height:.95;font-weight:400;letter-spacing:-.04em;margin:14px 0 22px}
+.visit-main p,.visit-side p{color:var(--muted);line-height:1.7}
+.visit-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.visit-side{display:flex;flex-direction:column;justify-content:space-between}
+.hours{display:grid;gap:11px;margin-top:22px}
+.hours div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;color:#dbcdbf}
+footer{padding:28px 5vw;border-top:1px solid var(--line);color:#9f8f80}
+.footer-in{max-width:1220px;margin:auto;display:flex;justify-content:space-between;gap:20px;font-size:11px}
+.mobile-toggle{display:none}
+@media(max-width:820px){
+ .links{display:none}
+ .mobile-toggle{display:inline-flex;border:1px solid rgba(255,255,255,.35);padding:9px 12px;border-radius:999px;font-size:11px}
+ .hero{min-height:86vh}
+ .hero-content{padding-top:150px}
+ .quick{grid-template-columns:1fr;margin-top:0}
+ .quick div{border-right:0;border-bottom:1px solid rgba(30,20,15,.12)}
+ .quick div:last-child{border-bottom:0}
+ section{padding:78px 5vw}
+ .section-head,.experience-grid,.events-grid,.visit-grid{grid-template-columns:1fr;gap:28px}
+ .section-head{margin-bottom:34px}
+ .photo-large,.photo-small,.events-photo{min-height:390px}
+ .menu-grid,.review-grid{grid-template-columns:1fr}
+ .review p{min-height:auto}
+ .demo-note{top:8px;font-size:9px}
+}
+@media(max-width:520px){
+ header{padding-top:42px}
+ h1{font-size:58px}
+ .brand{font-size:22px}
+ .hero-copy{font-size:14px}
+ .btn{width:100%}
+ .visit-main,.visit-side{padding:28px}
+ .footer-in{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="demo-note">Propuesta visual · Demo</div>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#inicio">CONSTANZA<small>RESTAURANTE · BAR · LEÓN</small></a>
+    <div class="links">
+      <a href="#experiencia">Restaurante</a>
+      <a href="#menu">Menú</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#visitanos">Contacto</a>
+      <a class="reserve-top" href="https://wa.me/34666326125" target="_blank" rel="noopener">Reservar</a>
+    </div>
+    <a class="mobile-toggle" href="https://wa.me/34666326125" target="_blank" rel="noopener">Reservar</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Cocina casera · León</span>
+    <h1>Sabores que reúnen.</h1>
+    <p class="hero-copy">
+      Cocina cercana, buen producto y un espacio pensado para disfrutar sin prisas.
+      Menú diario, tapas, raciones y celebraciones en el corazón de León.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="https://wa.me/34666326125" target="_blank" rel="noopener">Reservar por WhatsApp ↗</a>
+      <a class="btn btn-ghost" href="#menu">Descubrir la propuesta ↓</a>
+    </div>
+  </div>
+</section>
+
+<div class="quick">
+  <div><small>Ubicación</small><strong>Demetrio Monteserín, 7 · León</strong></div>
+  <div><small>Horario</small><strong>Todos los días · 09:00–00:00</strong></div>
+  <div><small>Reservas</small><strong>987 044 121 · 666 326 125</strong></div>
+</div>
+
+<section class="experience" id="experiencia">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Constanza</span>
+        <h2>Comer bien también es sentirse a gusto.</h2>
+      </div>
+      <p>
+        Una propuesta visual más cálida y actual para presentar el restaurante, el bar y los eventos
+        con la información importante a un toque desde el móvil.
+      </p>
+    </div>
+
+    <div class="experience-grid">
+      <div class="photo-large">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YBgeRJnro7CGJyr1/asdfghj-Yyv9ejn8vJTzz3bL.jpg" alt="Restaurante Constanza">
+        <div class="overlay-card">
+          <span>Restaurante</span>
+          <h3>Cocina casera, producto y sabor.</h3>
+        </div>
+      </div>
+      <div class="photo-small">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/YBgeRJnro7CGJyr1/ptptpt-YD0lO4JV5BCy0aL0.png" alt="Platos de Constanza">
+        <div class="overlay-card">
+          <span>Bar & tapas</span>
+          <h3>Un sitio para volver.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">La propuesta</span>
+        <h2>Una web que enseña lo que apetece probar.</h2>
+      </div>
+      <p>
+        En la versión final esta sección puede mostrar el menú diario, carta, raciones o especiales
+        y actualizarse fácilmente cuando cambie la oferta.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <article class="menu-card">
+        <div>
+          <span>Entre semana</span>
+          <h3>Menú diario</h3>
+          <p>Un espacio claro para mostrar primeros, segundos, postres, precio y disponibilidad del día.</p>
+        </div>
+        <strong>Actualizable fácilmente →</strong>
+      </article>
+      <article class="menu-card">
+        <div>
+          <span>Para compartir</span>
+          <h3>Tapas & raciones</h3>
+          <p>Una presentación más visual de los platos, tapas y raciones que mejor representan el local.</p>
+        </div>
+        <strong>Con fotos y categorías →</strong>
+      </article>
+      <article class="menu-card">
+        <div>
+          <span>Momentos especiales</span>
+          <h3>Menús de grupo</h3>
+          <p>Opciones para celebraciones, grupos y fechas especiales con llamada a reserva inmediata.</p>
+        </div>
+        <strong>Consultar disponibilidad →</strong>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="events" id="eventos">
+  <div class="wrap events-grid">
+    <div class="events-photo">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,h=900,fit=crop/YBgeRJnro7CGJyr1/eventos-Yan1WRz9WRtvXZj0.jpg" alt="Eventos en Restaurante Constanza">
+    </div>
+    <div class="events-copy">
+      <span class="eyebrow">Celebraciones</span>
+      <h2>Tu mesa. Tu gente. Tu momento.</h2>
+      <p>
+        Una sección específica para convertir visitas en reservas: comidas familiares, grupos,
+        celebraciones y encuentros especiales.
+      </p>
+      <div class="events-list">
+        <div><b>01</b><span>Reservas para grupos y celebraciones</span></div>
+        <div><b>02</b><span>Menús especiales y propuestas personalizadas</span></div>
+        <div><b>03</b><span>Contacto directo por WhatsApp y teléfono</span></div>
+      </div>
+      <a class="btn btn-main" href="https://wa.me/34666326125" target="_blank" rel="noopener">Consultar una fecha ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Opiniones</span>
+        <h2>Que hablen quienes ya han estado.</h2>
+      </div>
+      <p>Las reseñas positivas pueden ocupar un lugar mucho más visible y ayudar a transmitir confianza antes de reservar.</p>
+    </div>
+    <div class="review-grid">
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Muy buenas tapas, precios buenos y un trato profesional y encantador.”</p>
+        <small>Opinión de cliente</small>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Me encanta la comida, el personal es amable y también tiene buenas tapas.”</p>
+        <small>Opinión de cliente</small>
+      </article>
+      <article class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Un lugar agradable para tomar algo con su tapa y disfrutar con calma.”</p>
+        <small>Opinión de cliente</small>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visitanos">
+  <div class="wrap visit-grid">
+    <div class="visit-main">
+      <span class="eyebrow">Reserva</span>
+      <h2>Nos vemos en Constanza.</h2>
+      <p>Calle de Demetrio Monteserín, 7 · 24009 León</p>
+      <div class="visit-actions">
+        <a class="btn btn-main" href="https://wa.me/34666326125" target="_blank" rel="noopener">WhatsApp · 666 326 125 ↗</a>
+        <a class="btn btn-ghost" href="tel:+34987044121">Llamar · 987 044 121</a>
+      </div>
+    </div>
+    <aside class="visit-side">
+      <div>
+        <span class="eyebrow">Horario</span>
+        <div class="hours">
+          <div><span>Lunes–Jueves</span><b>09:00–00:00</b></div>
+          <div><span>Viernes–Domingo</span><b>09:00–00:00</b></div>
+        </div>
+      </div>
+      <p>
+        Esta demo es una propuesta inicial. En una versión definitiva se ajustarían textos,
+        fotografías, carta, promociones, enlaces sociales y cualquier necesidad del restaurante.
+      </p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <span>CONSTANZA · RESTAURANTE & BAR</span>
+    <span>Propuesta visual preparada por Andeka Rivera · 2026</span>
+  </div>
+</footer>
+</body>
+</html>
