@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Demo de clínica veterinaria moderna con servicios, cita previa, urgencias, equipo y recordatorios.">
+<title>LUMA · Clínica Veterinaria</title>
+<style>
+:root{
+  --bg:#f4f8f6;
+  --ink:#18312b;
+  --muted:#6d7f79;
+  --green:#2d7a66;
+  --green2:#3f9b80;
+  --mint:#dff1ea;
+  --cream:#fffdf8;
+  --coral:#f59b80;
+  --line:rgba(24,49,43,.12);
+  --shadow:0 24px 70px rgba(24,49,43,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+img{width:100%;height:100%;object-fit:cover;display:block}
+.demo-badge{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:100;padding:7px 11px;border-radius:999px;background:rgba(24,49,43,.88);color:#fff;font-size:10px;letter-spacing:.13em;text-transform:uppercase;backdrop-filter:blur(10px)}
+.header{position:sticky;top:0;z-index:50;background:rgba(244,248,246,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{width:min(1180px,calc(100% - 36px));height:76px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.02em}
+.brand-mark{width:36px;height:36px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:19px}
+.brand-text{font-size:20px}
+.brand-text small{display:block;font-size:8px;letter-spacing:.18em;color:var(--muted);font-weight:800}
+.nav-links{display:flex;gap:24px;align-items:center;font-size:12px;font-weight:700}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{padding:11px 15px;border-radius:999px;background:var(--green);color:#fff}
+.mobile-actions{display:none;align-items:center;gap:8px}
+.mobile-reserve{padding:9px 12px;border-radius:999px;background:var(--green);color:#fff;font-size:11px;font-weight:800}
+.mobile-toggle{border:1px solid var(--line);background:#fff;color:var(--ink);width:38px;height:38px;border-radius:12px;font-size:19px}
+.mobile-menu{display:none;position:absolute;top:76px;left:18px;right:18px;padding:12px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.mobile-menu.open{display:grid}
+.mobile-menu a{padding:13px 12px;border-bottom:1px solid var(--line);font-size:13px;font-weight:800}
+.mobile-menu a:last-child{border-bottom:0}
+
+.hero{width:min(1180px,calc(100% - 36px));margin:34px auto 0;display:grid;grid-template-columns:1.02fr .98fr;min-height:620px;background:var(--cream);border:1px solid var(--line);border-radius:32px;overflow:hidden;box-shadow:var(--shadow)}
+.hero-copy{padding:72px 58px;display:flex;flex-direction:column;justify-content:center}
+.kicker{display:inline-flex;align-items:center;gap:9px;width:max-content;color:var(--green);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.kicker:before{content:"";width:28px;height:2px;background:var(--green)}
+h1{margin:18px 0 20px;font-size:clamp(54px,6.5vw,88px);line-height:.93;letter-spacing:-.055em}
+.hero-copy p{max-width:600px;color:var(--muted);font-size:16px;line-height:1.7}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:999px;font-size:12px;font-weight:900;border:1px solid transparent}
+.btn-primary{background:var(--green);color:#fff}
+.btn-secondary{background:#fff;border-color:var(--line)}
+.hero-visual{position:relative;min-height:620px;background:
+ linear-gradient(180deg,rgba(19,52,42,.04),rgba(19,52,42,.16)),
+ url("https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1400&q=85") center/cover no-repeat}
+.hero-chip{position:absolute;left:24px;right:24px;bottom:24px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-radius:18px;padding:18px 20px;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.hero-chip strong{font-size:14px}
+.hero-chip span{font-size:11px;color:var(--muted)}
+
+.quick{width:min(1100px,calc(100% - 54px));margin:-24px auto 0;position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,1fr);background:#173d33;color:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 55px rgba(24,49,43,.18)}
+.quick div{padding:23px 26px;border-right:1px solid rgba(255,255,255,.12)}
+.quick div:last-child{border-right:0}
+.quick small{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#b8d8cc}
+.quick strong{display:block;margin-top:7px;font-size:16px}
+
+section{padding:96px 18px}
+.wrap{width:min(1180px,100%);margin:auto}
+.section-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:end;margin-bottom:40px}
+.section-head h2{margin:8px 0 0;font-size:clamp(42px,5vw,68px);line-height:.96;letter-spacing:-.045em}
+.section-head p{margin:0;color:var(--muted);line-height:1.75;max-width:620px}
+
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.service{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;min-height:230px;display:flex;flex-direction:column;transition:.2s ease}
+.service:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.service-icon{width:48px;height:48px;border-radius:14px;background:var(--mint);display:grid;place-items:center;font-size:22px}
+.service h3{margin:34px 0 10px;font-size:21px}
+.service p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+
+.reminders{background:#173d33;color:#fff}
+.reminders .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.reminders-card{background:#fff;color:var(--ink);border-radius:28px;padding:28px;box-shadow:0 28px 80px rgba(0,0,0,.2)}
+.pet-card{display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:18px;margin-bottom:10px}
+.pet-avatar{width:70px;height:70px;border-radius:18px;background:var(--mint);display:grid;place-items:center;font-size:34px}
+.pet-card b{display:block}
+.pet-card small{color:var(--muted)}
+.status{padding:7px 10px;border-radius:999px;background:#e8f6ef;color:#28735d;font-size:10px;font-weight:900}
+.reminders h2{font-size:clamp(44px,5vw,70px);line-height:.96;letter-spacing:-.045em;margin:14px 0 20px}
+.reminders p{color:#c2dbd2;line-height:1.75}
+.reminders-list{display:grid;gap:12px;margin:26px 0}
+.reminders-list div{display:flex;gap:11px;align-items:flex-start}
+.reminders-list b{color:#9ed7c5}
+
+.team-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.team-photo{min-height:520px;border-radius:28px;overflow:hidden;background:url("https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=1400&q=85") center/cover no-repeat}
+.team-info{display:grid;gap:14px}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px}
+.team-card span{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:900}
+.team-card h3{margin:9px 0 7px;font-size:24px}
+.team-card p{margin:0;color:var(--muted);line-height:1.6;font-size:13px}
+
+.urgencies{padding-top:20px}
+.urgent-box{width:min(1180px,calc(100% - 36px));margin:auto;background:linear-gradient(135deg,#f59b80,#ef7f61);color:#fff;border-radius:28px;padding:38px;display:flex;justify-content:space-between;gap:40px;align-items:center}
+.urgent-box h2{margin:0;font-size:clamp(36px,5vw,58px);letter-spacing:-.04em}
+.urgent-box p{margin:8px 0 0;color:#fff4ef}
+.urgent-number{flex:0 0 auto;padding:15px 18px;border-radius:999px;background:#fff;color:#8b3e2d;font-weight:900}
+
+.appointment{background:#fff}
+.appointment-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px}
+.contact-card,.form-card{border:1px solid var(--line);border-radius:26px;padding:32px;background:var(--cream)}
+.contact-card h2{font-size:clamp(42px,5vw,64px);line-height:.96;letter-spacing:-.045em;margin:14px 0 20px}
+.contact-card p{color:var(--muted);line-height:1.7}
+.contact-list{display:grid;gap:12px;margin-top:24px}
+.contact-list div{padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-list small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.contact-list b{display:block;margin-top:4px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:11px;font-weight:900}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px 13px;outline:none;color:var(--ink)}
+.field textarea{min-height:110px;resize:vertical}
+.form-note{grid-column:1/-1;color:var(--muted);font-size:11px}
+.submit{grid-column:1/-1;border:0;background:var(--green);color:#fff;border-radius:14px;padding:14px;font-weight:900;cursor:pointer}
+
+footer{padding:28px 18px;border-top:1px solid var(--line);background:#eff5f2}
+.footer-in{width:min(1180px,100%);margin:auto;display:flex;justify-content:space-between;gap:20px;font-size:11px;color:var(--muted)}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:#173d33;color:#fff;padding:12px 16px;border-radius:12px;font-size:12px;font-weight:800;transition:.2s;z-index:100}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+ .nav-links{display:none}
+ .mobile-actions{display:flex}
+ .hero{grid-template-columns:1fr;min-height:auto}
+ .hero-copy{padding:58px 34px}
+ .hero-visual{min-height:420px}
+ .quick{grid-template-columns:1fr;margin-top:16px}
+ .quick div{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
+ .quick div:last-child{border-bottom:0}
+ .section-head,.reminders .wrap,.team-grid,.appointment-grid{grid-template-columns:1fr}
+ .services-grid{grid-template-columns:1fr 1fr}
+ .team-photo{min-height:420px}
+ .urgent-box{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:620px){
+ .demo-badge{font-size:8px}
+ .nav{height:70px}
+ .brand-text{font-size:17px}
+ .brand-text small{display:none}
+ .hero{margin-top:20px;border-radius:24px}
+ .hero-copy{padding:48px 24px}
+ h1{font-size:54px}
+ .hero-actions .btn{width:100%}
+ .hero-visual{min-height:350px}
+ section{padding:72px 18px}
+ .services-grid{grid-template-columns:1fr}
+ .service{min-height:190px}
+ .section-head{gap:18px}
+ .team-photo{min-height:330px}
+ .form{grid-template-columns:1fr}
+ .field.full,.form-note,.submit{grid-column:auto}
+ .footer-in{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">Demo comercial · Clínica veterinaria</div>
+
+<header class="header">
+  <nav class="nav">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">🐾</span>
+      <span class="brand-text">LUMA<small>CLÍNICA VETERINARIA</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#recordatorios">Recordatorios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#urgencias">Urgencias</a>
+      <a class="nav-cta" href="#cita">Pedir cita</a>
+    </div>
+    <div class="mobile-actions">
+      <a class="mobile-reserve" href="#cita">Pedir cita</a>
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#servicios">Servicios</a>
+      <a href="#recordatorios">Recordatorios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#urgencias">Urgencias</a>
+      <a href="#cita">Pedir cita</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <span class="kicker">Veterinaria cercana · cuidado real</span>
+    <h1>Ellos no pueden pedir cita. Tú sí.</h1>
+    <p>
+      Medicina veterinaria con atención cercana, seguimiento personalizado y una experiencia sencilla
+      para reservar, consultar y recordar las revisiones importantes de tu mascota.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cita">Pedir cita ahora ↗</a>
+      <a class="btn btn-secondary" href="#servicios">Ver servicios ↓</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-chip">
+      <div><strong>Primera visita</strong><span>Revisión completa y plan de salud</span></div>
+      <span>🐶 🐱</span>
+    </div>
+  </div>
+</section>
+
+<div class="quick">
+  <div><small>Cita previa</small><strong>Reserva online o por teléfono</strong></div>
+  <div><small>Horario</small><strong>L–V 09:00–20:00 · S 10:00–14:00</strong></div>
+  <div><small>Urgencias</small><strong>Atención telefónica prioritaria</strong></div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="kicker">Servicios</span>
+        <h2>Todo lo que necesitan, en un mismo lugar.</h2>
+      </div>
+      <p>
+        La web puede adaptarse a cada clínica y mostrar los servicios de forma clara para que el cliente
+        sepa rápidamente dónde pedir cita y qué atención necesita su mascota.
+      </p>
+    </div>
+    <div class="services-grid">
+      <article class="service"><span class="service-icon">🩺</span><h3>Consulta general</h3><p>Revisiones, diagnóstico, seguimiento y prevención para perros y gatos.</p></article>
+      <article class="service"><span class="service-icon">💉</span><h3>Vacunación</h3><p>Calendarios de vacunación, desparasitación y recordatorios de próximas dosis.</p></article>
+      <article class="service"><span class="service-icon">🦷</span><h3>Salud dental</h3><p>Revisión bucodental, limpiezas y prevención de problemas dentales.</p></article>
+      <article class="service"><span class="service-icon">🔬</span><h3>Diagnóstico</h3><p>Analíticas, pruebas, seguimiento y derivación cuando sea necesario.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="reminders" id="recordatorios">
+  <div class="wrap">
+    <div>
+      <span class="kicker" style="color:#a9dfcf">Recordatorios inteligentes</span>
+      <h2>Que una vacuna o revisión no se vuelva a olvidar.</h2>
+      <p>
+        Una clínica puede combinar su web con un sistema de citas y recordatorios para avisar de revisiones,
+        vacunas, medicación o próximas visitas.
+      </p>
+      <div class="reminders-list">
+        <div><b>✓</b><span>Próxima vacuna o desparasitación</span></div>
+        <div><b>✓</b><span>Recordatorio de cita</span></div>
+        <div><b>✓</b><span>Seguimiento tras una intervención</span></div>
+        <div><b>✓</b><span>Historial de citas y clientes</span></div>
+      </div>
+      <a class="btn btn-primary" href="https://andekarivera20-cpu.github.io/Recordar-cita/" target="_blank" rel="noopener">Ver RecordaCita ↗</a>
+    </div>
+    <div class="reminders-card">
+      <div class="pet-card"><span class="pet-avatar">🐶</span><div><b>Nala</b><small>Vacuna anual · 18 octubre</small></div><span class="status">Programado</span></div>
+      <div class="pet-card"><span class="pet-avatar">🐱</span><div><b>Milo</b><small>Revisión · 22 octubre</small></div><span class="status">Recordatorio</span></div>
+      <div class="pet-card"><span class="pet-avatar">🐕</span><div><b>Rocky</b><small>Control postoperatorio · mañana</small></div><span class="status">Confirmado</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="kicker">Equipo</span><h2>Profesionales que transmiten confianza.</h2></div>
+      <p>Una presentación más humana del equipo ayuda a que el cliente conozca a quién va a cuidar de su mascota antes de llegar a la clínica.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-photo"></div>
+      <div class="team-info">
+        <article class="team-card"><span>Veterinaria</span><h3>Dra. Laura Martín</h3><p>Medicina general, prevención y seguimiento de pacientes.</p></article>
+        <article class="team-card"><span>Veterinario</span><h3>Dr. Diego Ruiz</h3><p>Cirugía, diagnóstico y medicina interna.</p></article>
+        <article class="team-card"><span>Auxiliar veterinaria</span><h3>Marta López</h3><p>Atención al paciente, apoyo clínico y seguimiento de citas.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="urgencies" id="urgencias">
+  <div class="urgent-box">
+    <div>
+      <h2>¿Necesitas atención urgente?</h2>
+      <p>En una web real, este botón llamaría directamente al teléfono de urgencias de la clínica.</p>
+    </div>
+    <a class="urgent-number" href="#cita">Contactar ahora ↗</a>
+  </div>
+</section>
+
+<section class="appointment" id="cita">
+  <div class="wrap appointment-grid">
+    <div class="contact-card">
+      <span class="kicker">Pedir cita</span>
+      <h2>Cuéntanos qué necesita tu mascota.</h2>
+      <p>
+        Esta demo incluye un formulario sencillo que podría conectarse a WhatsApp, correo,
+        calendario o a un sistema de gestión de citas.
+      </p>
+      <div class="contact-list">
+        <div><small>Teléfono</small><b>900 000 000</b></div>
+        <div><small>Email</small><b>hola@clinicademo.es</b></div>
+        <div><small>Dirección</small><b>Centro de la ciudad · España</b></div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form class="form" id="demoForm">
+        <div class="field"><label>Tu nombre</label><input required placeholder="Nombre"></div>
+        <div class="field"><label>Nombre de la mascota</label><input required placeholder="Ej. Nala"></div>
+        <div class="field"><label>Tipo</label><select><option>Perro</option><option>Gato</option><option>Otro</option></select></div>
+        <div class="field"><label>Servicio</label><select><option>Consulta general</option><option>Vacunación</option><option>Revisión</option><option>Urgencia</option></select></div>
+        <div class="field full"><label>Cuéntanos brevemente</label><textarea placeholder="Motivo de la consulta..."></textarea></div>
+        <p class="form-note">Demo comercial: este formulario no envía datos reales.</p>
+        <button class="submit" type="submit">Solicitar cita</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <span>LUMA · Demo de clínica veterinaria</span>
+    <span>Diseño adaptable a cualquier clínica · Andeka Rivera</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Demo: la solicitud no se ha enviado.</div>
+
+<script>
+const btn=document.getElementById('mobileMenuBtn');
+const menu=document.getElementById('mobileMenu');
+btn?.addEventListener('click',()=>{
+  const open=menu.classList.toggle('open');
+  btn.textContent=open?'×':'☰';
+});
+menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');btn.textContent='☰'}));
+
+document.getElementById('demoForm')?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2200);
+});
+</script>
+</body>
+</html>
