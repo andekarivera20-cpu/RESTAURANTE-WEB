@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Demo de clínica de fisioterapia moderna con tratamientos, equipo, contacto y sistema de citas.">
+<title>Viva Fisio | Clínica de Fisioterapia</title>
+<style>
+:root{
+  --bg:#f6f8fb;--card:#ffffff;--text:#1d2a33;--muted:#6f7f8a;
+  --primary:#2c8e8b;--primary-dark:#1f6d6b;--accent:#dff4f2;
+  --line:#e4eaef;--shadow:0 18px 50px rgba(20,40,60,.08)
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit} button,input,textarea,select{font:inherit}
+.demo-badge{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:1000;background:#132028;color:#fff;padding:8px 12px;border-radius:999px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.header{position:sticky;top:0;z-index:100;background:rgba(246,248,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{width:min(1180px,calc(100% - 32px));margin:auto;height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900}.brand-mark{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:var(--primary);color:#fff;font-size:20px}.brand-text{font-size:20px}.brand-text small{display:block;margin-top:5px;font-size:9px;letter-spacing:.16em;color:var(--muted);font-weight:800}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:13px;font-weight:700}.nav-links a:hover{color:var(--primary)}.nav-cta{padding:11px 15px;background:var(--primary);color:#fff;border-radius:999px}
+.mobile-actions{display:none;align-items:center;gap:8px}.mobile-book{padding:10px 12px;border-radius:999px;background:var(--primary);color:#fff;font-size:11px;font-weight:800}.mobile-toggle{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:20px;color:var(--text);cursor:pointer}
+.mobile-menu{display:none;position:absolute;left:16px;right:16px;top:76px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.mobile-menu.open{display:grid}.mobile-menu a{padding:15px 16px;border-bottom:1px solid var(--line);font-size:14px;font-weight:800}.mobile-menu a:last-child{border-bottom:0}
+
+.hero{width:min(1180px,calc(100% - 32px));margin:28px auto 0;display:grid;grid-template-columns:1.05fr .95fr;gap:18px;align-items:stretch}
+.hero-copy,.hero-card{background:var(--card);border:1px solid var(--line);border-radius:32px;box-shadow:var(--shadow)}
+.hero-copy{padding:60px 46px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--primary);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;width:max-content}.eyebrow:before{content:"";width:28px;height:2px;background:var(--primary)}
+h1{margin:18px 0;font-size:clamp(46px,6vw,84px);line-height:.94;letter-spacing:-.05em}.hero-copy p{max-width:620px;color:var(--muted);line-height:1.75;font-size:16px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:999px;font-size:13px;font-weight:900;border:1px solid transparent}.btn-primary{background:var(--primary);color:#fff}.btn-secondary{background:#fff;border-color:var(--line)}
+.hero-card{padding:26px;display:flex;flex-direction:column;justify-content:space-between;min-height:540px;background:linear-gradient(135deg,rgba(44,142,139,.08),rgba(44,142,139,.02)),#fff}
+.hero-image{border-radius:24px;min-height:310px;background:linear-gradient(rgba(20,40,50,.10),rgba(20,40,50,.10)),url("https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat}
+.hero-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.mini{background:var(--accent);border-radius:18px;padding:16px}.mini small{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--primary-dark);font-weight:900}.mini strong{display:block;margin-top:8px;font-size:16px;line-height:1.3}
+
+.quick{width:min(1100px,calc(100% - 52px));margin:-18px auto 0;position:relative;z-index:2;background:#16333e;color:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 20px 50px rgba(20,40,60,.16)}
+.quick div{padding:22px 24px;border-right:1px solid rgba(255,255,255,.12)}.quick div:last-child{border-right:0}.quick small{display:block;color:#b9d6dd;font-size:9px;text-transform:uppercase;letter-spacing:.14em}.quick strong{display:block;margin-top:7px;font-size:16px;line-height:1.35}
+
+section{padding:92px 16px}.wrap{width:min(1180px,100%);margin:auto}.section-head{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:end;margin-bottom:38px}.section-head h2{margin:10px 0 0;font-size:clamp(36px,5vw,66px);line-height:.96;letter-spacing:-.04em}.section-head p{margin:0;color:var(--muted);line-height:1.75;max-width:650px}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.service{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;min-height:220px;box-shadow:var(--shadow);transition:.2s ease}.service:hover{transform:translateY(-4px)}.service-icon{width:48px;height:48px;border-radius:14px;background:var(--accent);display:grid;place-items:center;font-size:22px}.service h3{margin:30px 0 10px;font-size:21px}.service p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+
+.appointments{background:#16333e;color:#fff}.appointments .grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.appointments h2{margin:12px 0 16px;font-size:clamp(40px,5vw,68px);line-height:.95;letter-spacing:-.045em}.appointments p{color:#c5dbe1;line-height:1.75}.appointments-list{display:grid;gap:12px;margin:24px 0}.appointments-list div{display:flex;gap:10px;align-items:flex-start}.appointments-list b{color:#9ad8d2}
+.app-card{background:#fff;color:var(--text);border-radius:28px;padding:26px;box-shadow:0 26px 70px rgba(0,0,0,.18)}.appt-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:18px;margin-bottom:10px}.appt-avatar{width:56px;height:56px;border-radius:16px;background:var(--accent);display:grid;place-items:center;font-size:24px}.appt-row small{color:var(--muted);display:block;margin-top:3px}.appt-status{padding:7px 10px;border-radius:999px;background:#eaf7f3;color:var(--primary-dark);font-size:10px;font-weight:900}
+
+.team-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.team-photo{min-height:520px;border-radius:28px;overflow:hidden;background:linear-gradient(rgba(20,40,50,.08),rgba(20,40,50,.08)),url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;box-shadow:var(--shadow);border:1px solid var(--line)}.team-info{display:grid;gap:14px}.team-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.team-card span{color:var(--primary);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:900}.team-card h3{margin:8px 0;font-size:24px}.team-card p{margin:0;color:var(--muted);line-height:1.65;font-size:13px}
+
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.review{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.stars{color:#f2b84a;letter-spacing:.12em;font-size:14px}.review p{color:var(--muted);line-height:1.7;min-height:110px}.review strong{font-size:14px}
+
+.cta{padding-top:10px}.cta-box{width:min(1180px,calc(100% - 32px));margin:auto;background:linear-gradient(135deg,#2c8e8b,#1f6d6b);color:#fff;border-radius:30px;padding:40px;display:flex;justify-content:space-between;gap:30px;align-items:center;box-shadow:0 24px 60px rgba(31,109,107,.22)}.cta-box h2{margin:0;font-size:clamp(34px,5vw,56px);line-height:.96;letter-spacing:-.04em}.cta-box p{margin:10px 0 0;color:#d5efec;line-height:1.7;max-width:650px}.cta-actions{flex:0 0 auto;display:flex;gap:12px;flex-wrap:wrap}.cta-actions a{padding:14px 18px;border-radius:999px;font-weight:900;font-size:13px;background:#fff;color:#194744}.cta-actions a.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+
+.contact{background:#fff}.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:18px}.contact-card,.form-card{border:1px solid var(--line);border-radius:28px;padding:30px;background:#fbfcfd;box-shadow:var(--shadow)}.contact-card h2{margin:12px 0 18px;font-size:clamp(36px,5vw,62px);line-height:.96;letter-spacing:-.04em}.contact-card p{color:var(--muted);line-height:1.7}.contact-list{display:grid;gap:14px;margin-top:26px}.contact-list div{padding-bottom:14px;border-bottom:1px solid var(--line)}.contact-list small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.12em}.contact-list b{display:block;margin-top:4px;font-size:15px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:900}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;color:var(--text);outline:none}.field textarea{min-height:110px;resize:vertical}.form-note{grid-column:1/-1;color:var(--muted);font-size:11px}.submit{grid-column:1/-1;border:0;border-radius:16px;padding:14px;background:var(--primary);color:#fff;font-weight:900;cursor:pointer}
+
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:#17333e;color:#fff;padding:12px 16px;border-radius:12px;font-size:12px;font-weight:800;transition:.2s;z-index:1000}.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{padding:28px 16px;border-top:1px solid var(--line);color:var(--muted);background:#eff4f7}.footer-in{width:min(1180px,100%);margin:auto;display:flex;justify-content:space-between;gap:20px;font-size:11px}
+
+@media(max-width:920px){
+  .nav-links{display:none}.mobile-actions{display:flex}
+  .hero,.appointments .grid,.team-grid,.contact-grid,.section-head{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}.reviews-grid{grid-template-columns:1fr}
+  .quick{grid-template-columns:1fr;margin-top:16px}.quick div{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}.quick div:last-child{border-bottom:0}
+  .cta-box{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+  .hero{width:min(1180px,calc(100% - 20px));margin-top:18px}.hero-copy{padding:42px 22px}.hero-card{padding:18px}
+  .services-grid{grid-template-columns:1fr}h1{font-size:50px}section{padding:74px 16px}
+  .form{grid-template-columns:1fr}.field.full,.form-note,.submit{grid-column:auto}.footer-in{flex-direction:column}.cta-box{padding:28px}
+  .hero-actions .btn,.cta-actions a{width:100%}.hero-info{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="demo-badge">Demo comercial · Fisioterapia</div>
+
+<header class="header">
+  <nav class="nav">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">✚</span>
+      <span class="brand-text">Viva Fisio<small>CLÍNICA DE FISIOTERAPIA</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Tratamientos</a>
+      <a href="#citas">Citas</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#opiniones">Opiniones</a>
+      <a class="nav-cta" href="#contacto">Pedir cita</a>
+    </div>
+    <div class="mobile-actions">
+      <a class="mobile-book" href="#contacto">Pedir cita</a>
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#servicios">Tratamientos</a>
+      <a href="#citas">Citas</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Pedir cita</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-copy">
+    <span class="eyebrow">Fisioterapia · recuperación · bienestar</span>
+    <h1>Muévete mejor. Vive sin dolor.</h1>
+    <p>Una clínica moderna de fisioterapia necesita una web clara, profesional y fácil de usar. Esta demo está pensada para enseñar tratamientos, generar confianza y facilitar las citas.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contacto">Pedir cita ahora ↗</a>
+      <a class="btn btn-secondary" href="#servicios">Ver tratamientos ↓</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-image"></div>
+    <div class="hero-info">
+      <div class="mini"><small>Especialidades</small><strong>Espalda, lesiones deportivas y suelo pélvico</strong></div>
+      <div class="mini"><small>Cita rápida</small><strong>Web + sistema de recordatorios integrado</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="quick">
+  <div><small>Primera visita</small><strong>Valoración completa y tratamiento personalizado</strong></div>
+  <div><small>Horario</small><strong>Lunes a viernes · 09:00–20:00</strong></div>
+  <div><small>Reservas</small><strong>Cita online, teléfono o WhatsApp</strong></div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Tratamientos</span><h2>Servicios que el paciente entiende a la primera.</h2></div>
+      <p>La idea es que cualquier clínica pueda enseñar claramente qué trata, para quién es y cómo reservar, sin una web recargada ni difícil de navegar.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service"><div class="service-icon">🦴</div><h3>Dolor de espalda</h3><p>Tratamiento de cervicalgia, dorsalgia y lumbalgia con un enfoque personalizado.</p></article>
+      <article class="service"><div class="service-icon">🏃</div><h3>Lesión deportiva</h3><p>Recuperación de sobrecargas, esguinces, tendinopatías y readaptación funcional.</p></article>
+      <article class="service"><div class="service-icon">🤰</div><h3>Suelo pélvico</h3><p>Atención especializada para embarazo, postparto y disfunciones del suelo pélvico.</p></article>
+      <article class="service"><div class="service-icon">💆</div><h3>Terapia manual</h3><p>Técnicas manuales y ejercicio terapéutico para mejorar dolor, movilidad y calidad de vida.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="appointments" id="citas">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow" style="color:#8dd8d3">Citas y recordatorios</span>
+      <h2>Web + RecordaCita: una propuesta más completa.</h2>
+      <p>Para clínicas con cita previa, lo interesante no es solo tener una web bonita: también poder organizar mejor las citas y reducir olvidos.</p>
+      <div class="appointments-list">
+        <div><b>✓</b><span>Solicitudes de cita más claras</span></div>
+        <div><b>✓</b><span>Recordatorios automáticos de sesión</span></div>
+        <div><b>✓</b><span>Menos olvidos y menos huecos perdidos</span></div>
+        <div><b>✓</b><span>Imagen más profesional de la clínica</span></div>
+      </div>
+      <a class="btn btn-primary" target="_blank" href="https://andekarivera20-cpu.github.io/Recordar-cita/">Ver RecordaCita ↗</a>
+    </div>
+
+    <div class="app-card">
+      <div class="appt-row"><div class="appt-avatar">👤</div><div><strong>Laura G.</strong><small>Martes · 17:30 · Primera valoración</small></div><span class="appt-status">Confirmada</span></div>
+      <div class="appt-row"><div class="appt-avatar">🏃</div><div><strong>Álvaro M.</strong><small>Miércoles · 10:00 · Lesión deportiva</small></div><span class="appt-status">Recordatorio</span></div>
+      <div class="appt-row"><div class="appt-avatar">🦴</div><div><strong>Carmen R.</strong><small>Jueves · 18:15 · Dolor lumbar</small></div><span class="appt-status">Pendiente</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="equipo">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Equipo</span><h2>Personas que inspiran confianza antes de entrar.</h2></div>
+      <p>Mostrar bien al equipo da mucha tranquilidad al paciente y hace que una clínica transmita cercanía y profesionalidad.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-photo"></div>
+      <div class="team-info">
+        <article class="team-card"><span>Fisioterapeuta</span><h3>Laura Martín</h3><p>Especialista en dolor de espalda, terapia manual y ejercicio terapéutico.</p></article>
+        <article class="team-card"><span>Fisioterapeuta deportivo</span><h3>Diego Ruiz</h3><p>Recuperación de lesiones deportivas y readaptación funcional.</p></article>
+        <article class="team-card"><span>Suelo pélvico</span><h3>María López</h3><p>Atención específica en embarazo, postparto y bienestar femenino.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Opiniones</span><h2>Reseñas que ayudan a decidir.</h2></div>
+      <p>Un espacio claro para mostrar opiniones reales y reforzar la confianza antes de reservar.</p>
+    </div>
+    <div class="reviews-grid">
+      <article class="review"><div class="stars">★★★★★</div><p>“Muy buen trato y mejora desde la primera sesión.”</p><strong>Paciente</strong></article>
+      <article class="review"><div class="stars">★★★★★</div><p>“Fui por una sobrecarga y salí encantado. Muy profesionales.”</p><strong>Paciente</strong></article>
+      <article class="review"><div class="stars">★★★★★</div><p>“El recordatorio de citas resulta muy cómodo y da una imagen muy profesional.”</p><strong>Paciente</strong></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-box">
+    <div>
+      <h2>Una web pensada para convertir visitas en citas.</h2>
+      <p>Diseño, tratamientos, equipo y sistema de citas en una propuesta adaptable a cualquier clínica.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#contacto">Pedir cita</a>
+      <a class="secondary" target="_blank" href="https://andekarivera20-cpu.github.io/Mi-portfolio/">Ver portfolio</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-card">
+      <span class="eyebrow">Contacto</span>
+      <h2>Reserva tu sesión.</h2>
+      <p>En una versión real, esta zona se conectaría con WhatsApp, RecordaCita, correo o un formulario de solicitud.</p>
+      <div class="contact-list">
+        <div><small>Teléfono</small><b>900 000 000</b></div>
+        <div><small>Email</small><b>hola@vivafisio.es</b></div>
+        <div><small>Dirección</small><b>Centro de la ciudad · España</b></div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form class="form" id="demoForm">
+        <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+        <div class="field"><label>Teléfono</label><input type="text" placeholder="Tu teléfono" required></div>
+        <div class="field"><label>Tratamiento</label><select><option>Dolor de espalda</option><option>Lesión deportiva</option><option>Suelo pélvico</option><option>Terapia manual</option></select></div>
+        <div class="field"><label>Preferencia</label><select><option>Mañana</option><option>Tarde</option><option>Indiferente</option></select></div>
+        <div class="field full"><label>Cuéntanos brevemente</label><textarea placeholder="Ej. dolor lumbar desde hace semanas..."></textarea></div>
+        <p class="form-note">Demo comercial: este formulario no envía datos reales.</p>
+        <button class="submit" type="submit">Solicitar cita</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <span>Viva Fisio · Demo comercial</span>
+    <span>Diseñada para clínicas de fisioterapia · Andeka Rivera</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Demo: la solicitud no se ha enviado.</div>
+
+<script>
+const btn=document.getElementById("mobileMenuBtn");
+const menu=document.getElementById("mobileMenu");
+if(btn&&menu){
+  btn.addEventListener("click",()=>{
+    const open=menu.classList.toggle("open");
+    btn.textContent=open?"×":"☰";
+  });
+  menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{
+    menu.classList.remove("open");
+    btn.textContent="☰";
+  }));
+}
+const form=document.getElementById("demoForm");
+const toast=document.getElementById("toast");
+if(form&&toast){
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    toast.classList.add("show");
+    setTimeout(()=>toast.classList.remove("show"),2200);
+  });
+}
+</script>
+</body>
+</html>
